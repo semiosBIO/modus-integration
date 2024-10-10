@@ -89,7 +89,7 @@ This error can be resolved by following this approach:
    the Agworld user, although Agworld Customer Success may also be able to
    assist with this.
 
-## Sample Not found
+## Sample Not Found
 
 Error text:
 > Error importing sample unique id {bad_id}: Sample could not be found
@@ -103,6 +103,19 @@ This error can be resolved by the following process:
    Agworld sample ID.
 2. Check with the relevant Agworld user to confirm what the correct sample IDs
    are for the collection job in question.
+
+## Sample Not Found (Blank)
+
+Error text:
+> Error importing sample with ‘sample unique id’ of ‘[BLANK]’ (the
+> <FMISSampleID></FMISSampleID> tags are either missing, or, if present, don’t
+> contain an ID) - Sample could not be found
+
+This error occurs when the results contain a record which is missing the
+<FMISSampleID> tag or where that tag is empty (has no contents).
+
+This error can be resolved by including the FMISSampleID tag in the results XML
+with a valid Sample ID.
 
 ## XML contains no results
 
