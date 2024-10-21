@@ -21,7 +21,7 @@ A CSV file listing all lab tests (packages/suites and individual tests) that are
 
 For each test, provide:
 
-2.1) The test code. This will be the code provided to the lab, c.f: ExampleSampleSubmissionData_v3.csv. e.g. "S3"
+2.1) The test code. This will be the code provided to the lab, c.f: [example_submission.csv](https://github.com/semiosBIO/modus-integration/blob/main/example_submission.csv). e.g. "S3"
 
 2.2) The test name. This will be made selectable in Agworld. e.g. "Standard Package 3 - S3"
 
@@ -31,7 +31,7 @@ For each test, provide:
 
 ### Purpose
 This list will enable us to make those tests selectable within the Agworld interface by your customers.
-The test ids/codes will populate the “test suites” column in [ExampleSampleSubmissionData_v3.csv](https://github.com/semiosBIO/modus-integration/blob/main/example_submission.csv)
+The test ids/codes will populate the “test suites” column in [example_submission.csv](https://github.com/semiosBIO/modus-integration/blob/main/example_submission.csv)
 (i.e. we’ll put the id/code in there based on the user's selection. This can have multiple values which will be semi-colon separated.)
 
 There is a drop down list in Agworld that users can select from to pick the test suite(s) or individual test(s) that they want performed by you:
@@ -57,7 +57,7 @@ The purposes of the four columns are as follows:
 
 ## 3. Example Lab Results XML File
 ### Details
-An example lab results XML file with the format and data that you will be sending your lab results to us in (i.e. Modus format). c.f: [exampleMinimumModusOutput.xml](https://github.com/semiosBIO/modus-integration/blob/main/example_modus_result.xml)
+An example lab results XML file with the format and data that you will be sending your lab results to us in (i.e. Modus format). c.f: [example_modus_result.xml](https://github.com/semiosBIO/modus-integration/blob/main/example_modus_result.xml)
 
 ### Purpose
 This allows us to check that we will be able to automatically import the files you send to us.
@@ -80,8 +80,8 @@ To enable the sending/retrieving of samples/results, and error/success handling.
 ## Example files
 Please make yourself familiar with the following files.
 
-### 1. ExampleSampleSubmissionData_v3.csv
-The file can be found here: [ExampleSampleSubmissionData_v3.csv](https://github.com/semiosBIO/modus-integration/blob/main/example_submission.csv)
+### 1. example_submission.csv
+The file can be found here: [example_submission.csv](https://github.com/semiosBIO/modus-integration/blob/main/example_submission.csv)
 
 Description: The samples submission file we send to you.
 
@@ -92,14 +92,14 @@ The “sample barcode” column contains the barcode that will match the barcode
 The “sample unique id” is the id that Agworld requires to identify the results for each sample when you email them to Agworld's lab results email address (our automated email inbox).
 This "sample unique id" belongs in the <FMISSampleID> tag when sending Agworld the results.
 
-### 2. exampleMinimumModusOutput.xml
-The file can be found here: [exampleMinimumModusOutput.xml](https://github.com/semiosBIO/modus-integration/blob/main/example_modus_result.xml)
+### 2. example_modus_result.xml
+The file can be found here: [example_modus_result.xml](https://github.com/semiosBIO/modus-integration/blob/main/example_modus_result.xml)
 
 Description: The lab results file you send back to us (Maximum XML File Size: 2MB).
 
 #### Details
 This is an example of a Modus xml file that you will need to send to Agworld.
-The data inside it corresponds to the results for the first 2 samples we provided in [ExampleSampleSubmissionData_v3.csv](https://github.com/semiosBIO/modus-integration/blob/main/example_submission.csv).
+The data inside it corresponds to the results for the first 2 samples we provided in [example_submission.csv](https://github.com/semiosBIO/modus-integration/blob/main/example_submission.csv).
 There are many more fields that can be populated in the MODUS xml, although this is what we consider a minimum.
 (i.e. we don’t require EventCodes, DepthRefs etc, although they can be provided).
 Note that in Production, you cannot send XML files to Agworld that are larger than 2MB. Most labs send results for 1 field / sample job at a time.
