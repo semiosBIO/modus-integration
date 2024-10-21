@@ -64,7 +64,7 @@ This allows us to check that we will be able to automatically import the files y
 
 ## 4. Four email addresses
 ### Details
-4.1) The "to" email address to send our sample submission information to (i.e. the ExampleSampleSubmissionData_v3.csv files), so that when the physical samples arrive at the lab, you’ll have all the information required to process them.
+4.1) The "to" email address to send our sample submission information to (i.e. the [example_submission.csv](https://github.com/semiosBIO/modus-integration/blob/main/example_submission.csv) files), so that when the physical samples arrive at the lab, you’ll have all the information required to process them.
 
 4.2) The "from" email address that Agworld will receive the Modus XML lab results from (when you send Agworld the lab results).
 
