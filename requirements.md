@@ -10,7 +10,7 @@ Please read on for more details.
 
 ## 1. Identification of the Modus Test IDs you'll use
 ### Detail
-For every lab result you provide, a Modus Test ID needs to be provided with that result as specified in the Excel files located in the [modus documentation](https://github.com/AgGateway/Modus/tree/main/Method%20Lists/Modus%201). (e.g. "Soil Analysis Nomenclature.xlsx” for soil tests). To onboard with Agworld, you need to consider the tests your lab performs (the elements tested, the extraction methods, chemistry, units reported), and which Modus Test Ids they correspond to. Send us that list of Modus Test IDs so we can verify they match the latest version of the Modus standard.
+For every lab result you provide, a Modus Test ID needs to be provided with that result as specified in the Excel files located in the [modus documentation](https://github.com/AgGateway/Modus/tree/main/Method%20Lists/Modus%201). (e.g. "Soil Analysis Nomenclature.xlsx” for soil tests). To onboard with Agworld, you need to consider the tests your lab performs (the elements tested, the extraction methods, chemistry, units reported), and which Modus Test IDs they correspond to. Send us that list of Modus Test IDs so we can verify they match the latest version of the Modus standard.
 
 ### Purpose
 To ensure that when you provide us a lab result, we know the exact element, extraction method, and chemistry used. Also, we want to flag early in this process if updates to the standard are required.
@@ -31,7 +31,7 @@ For each test, provide:
 
 ### Purpose
 This list will enable us to make those tests selectable within the Agworld interface by your customers.
-The test ids/codes will populate the “test suites” column in [example_submission.csv](https://github.com/semiosBIO/modus-integration/blob/main/example_submission.csv)
+The test IDs/codes will populate the “test suites” column in [example_submission.csv](https://github.com/semiosBIO/modus-integration/blob/main/example_submission.csv)
 (i.e. we’ll put the id/code in there based on the user's selection. This can have multiple values which will be semi-colon separated.)
 
 There is a drop down list in Agworld that users can select from to pick the test suite(s) or individual test(s) that they want performed by you:
