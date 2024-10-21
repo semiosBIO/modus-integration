@@ -31,7 +31,7 @@ For each test, provide:
 
 ### Purpose
 This list will enable us to make those tests selectable within the Agworld interface by your customers.
-The test IDs/codes will populate the “test suites” column in [example_submission.csv](https://github.com/semiosBIO/modus-integration/blob/main/example_submission.csv)
+The test codes will populate the “test suites” column in [example_submission.csv](https://github.com/semiosBIO/modus-integration/blob/main/example_submission.csv)
 (i.e. we’ll put the id/code in there based on the user's selection. This can have multiple values which will be semi-colon separated.)
 
 There is a drop down list in Agworld that users can select from to pick the test suite(s) or individual test(s) that they want performed by you:
