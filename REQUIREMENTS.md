@@ -53,11 +53,11 @@ There is a drop down list in Agworld that users can select from to pick the test
 ![In Agworld these options will be provided to your customers](https://github.com/semiosBIO/modus-integration/blob/main/lab_test_selection.png)
 
 How this dropdown relates to this step - we need a list of information to build this drop down list.
-Here's a (tiny) :
+Here's a (tiny) example:
 
 ![Send us this information](https://github.com/semiosBIO/modus-integration/blob/main/test_suite_csv.png)
 
-In the above , the first three items are test suites, the last three are individual tests.
+In the above example, the first three items are test suites, the last three are individual tests.
 
 The purposes of the four columns are as follows:
 
@@ -65,7 +65,7 @@ The purposes of the four columns are as follows:
 
 **Display Name** is the name of the test suite (or individual test) that you would like visible to the user in the drop down list as seen above.
 
-**Description** is what is shown in the tooltip when the user hovers over the test name - which may describe (for ) the list of analyses performed as part of the test suite. For individual tests, it may only contain just the element name again.
+**Description** is what is shown in the tooltip when the user hovers over the test name - which may describe (for example) the list of analyses performed as part of the test suite. For individual tests, it may only contain just the element name again.
 
 **Sample Type** is the type of test that it is - e.g. "Soil" or "Plant" etc. Currently only Soil is supported.
 
