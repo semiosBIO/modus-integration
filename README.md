@@ -36,14 +36,14 @@ The main steps in the Agworld workflow that are relevant to labs are:
 1. An Agworld agronomist or third-party collector will use our Sample Collection iPad App to collect samples in their client's fields, either with barcoded bags, or a handwritten sample id system. (The iPad facilitates barcode/id scans using its camera, or manual id input as necessary).
 2. Upon collection completion, the iPad will send an email to the lab notifying them of an incoming lab samples submission with a CSV attachment containing detailed information about them. This will include sample barcodes/ids, the lab test suites/packages to run, the date sampled, billing, collector and grower information, and an email address to send lab results to.
 3. The lab will process the samples in the following way:
-- The lab will receive the physical samples, and will perform a match up with the CSV attachment and the barcodes/ids on the bags.
+- The lab will receive the physical samples, and will perform a match up with the CSV attachment and the barcodes or sequence numbers on the bags.
 - The samples will be processed.
 - The results will be emailed to Agworld in Modus XML format.
 4. Agworld will receive the results, match the results based on the "sample unique id" provided in the samples submission CSV, and begin performing precision analysis on the results.
 
 ### Input data that the Lab Receives from Agworld (Sample Information)
-When Agworld sample collectors have finished their sample collecting using our iPad’s Sampling App, the iPad will automatically send the lab an email containing an attachment similar to this [CSV file](/example_submission.csv). It contains all the information the lab should require to be able to identify each sample, know what tests to run, who to bill and contact, and where to send the results (our automated email inbox).
-The “sample barcode” column contains the barcode that will match the barcode on the individual bags. Or if barcodes are not used, just a unique id that will be labelled on the bag.
+When Agworld sample collectors have finished their sample collecting using our iPad’s Sampling App, the iPad will automatically send the lab an email containing an attachment similar to this [CSV file](/example_submission_barcodes.csv). It contains all the information the lab should require to be able to identify each sample, know what tests to run, who to bill and contact, and where to send the results (our automated email inbox).
+The “sample barcode” column will contain either a barcode or a sequence number (depending on what method the sample collectors have selected) that will match value on the individual bags. 
 The “sample unique id” is the id that Agworld requires to identify the results for each sample when you email them to our automated email inbox.
 
 ### Output data that the Lab Emails to Agworld (Lab results)
@@ -57,7 +57,7 @@ Since Agworld is integrating with dozens of different labs, Modus allows us to r
 For labs, it means adopting a standard that is going to be compatible with more FMIS’ in future, and can expect a quick turn-around time when changing test suites, extraction methods, chemistry, units, etc.
 
 #### Example Output
-The links above provide XML Schema Definitions (XSDs) which clearly state the acceptable structure and parameters for Modus XML Lab Results. However, here is an [example Modus XML file](/example_modus_result.xml) that would correspond to the results for the first 2 samples we provided in the [example CSV file](/example_submission.csv) that the iPad Sampling App sends. There are many more fields that can be populated in the Modus XML, although this is what we consider a minimum. That is, we don’t require elements like EventCodes, DepthRefs and the like, although they can be provided. Note that in Production, you cannot send XML files to Agworld that are larger than 2MB. Most labs choose to send results for 1 field / sample job at a time.
+The links above provide XML Schema Definitions (XSDs) which clearly state the acceptable structure and parameters for Modus XML Lab Results. However, here is an [example Modus XML file](/example_modus_result.xml) that would correspond to the results for the first 2 samples we provided in the [example CSV file](/example_submission_barcodes.csv) that the iPad Sampling App sends. There are many more fields that can be populated in the Modus XML, although this is what we consider a minimum. That is, we don’t require elements like EventCodes, DepthRefs and the like, although they can be provided. Note that in Production, you cannot send XML files to Agworld that are larger than 2MB. Most labs choose to send results for 1 field / sample job at a time.
 
 ### What Agworld needs for a Complete Integration
 1. The ability of the lab to send results in Modus XML format to our automated lab inbox. The address of this inbox varies by region and the latest email address is provided in each submission CSV sent to the lab.
