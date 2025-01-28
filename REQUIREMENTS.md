@@ -94,7 +94,7 @@ To enable the sending/retrieving of samples/results, and error/success handling.
 ## Example files
 Please make yourself familiar with the following files.
 
-### 1. example_submission.csv
+### 1. example_submission_barcode.csv
 The file can be found here: [example_submission_barcodes.csv](https://github.com/semiosBIO/modus-integration/blob/main/example_submission_barcodes.csv)
 
 Description: The samples submission file we send to you.
