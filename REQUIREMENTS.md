@@ -35,7 +35,7 @@ A CSV file listing all lab tests (packages/suites and individual tests) that are
 
 For each test, provide:
 
-2.1) The test code. This will be the code provided to the lab, c.f: [example_submission_barcodes.csv](https://github.com/semiosBIO/modus-integration/blob/main/example_submission_barcodes.csv). e.g. "S3"
+2.1) The test code. This will be the code provided to the lab, c.f: [_submission_barcodes.csv](https://github.com/semiosBIO/modus-integration/blob/main/_submission_barcodes.csv). e.g. "S3"
 
 2.2) The test name. This will be made selectable in Agworld. e.g. "Standard Package 3 - S3"
 
@@ -45,7 +45,7 @@ For each test, provide:
 
 ### Purpose
 This list will enable us to make those tests selectable within the Agworld interface by your customers.
-The test codes will populate the “test suites” column in [example_submission_barcodes.csv](https://github.com/semiosBIO/modus-integration/blob/main/example_submission_barcodes.csv)
+The test codes will populate the “test suites” column in [_submission_barcodes.csv](https://github.com/semiosBIO/modus-integration/blob/main/_submission_barcodes.csv)
 (i.e. we’ll put the id/code in there based on the user's selection. This can have multiple values which will be semi-colon separated.)
 
 There is a drop down list in Agworld that users can select from to pick the test suite(s) or individual test(s) that they want performed by you:
@@ -53,11 +53,11 @@ There is a drop down list in Agworld that users can select from to pick the test
 ![In Agworld these options will be provided to your customers](https://github.com/semiosBIO/modus-integration/blob/main/lab_test_selection.png)
 
 How this dropdown relates to this step - we need a list of information to build this drop down list.
-Here's a (tiny) example:
+Here's a (tiny) :
 
 ![Send us this information](https://github.com/semiosBIO/modus-integration/blob/main/test_suite_csv.png)
 
-In the above example, the first three items are test suites, the last three are individual tests.
+In the above , the first three items are test suites, the last three are individual tests.
 
 The purposes of the four columns are as follows:
 
@@ -65,7 +65,7 @@ The purposes of the four columns are as follows:
 
 **Display Name** is the name of the test suite (or individual test) that you would like visible to the user in the drop down list as seen above.
 
-**Description** is what is shown in the tooltip when the user hovers over the test name - which may describe (for example) the list of analyses performed as part of the test suite. For individual tests, it may only contain just the element name again.
+**Description** is what is shown in the tooltip when the user hovers over the test name - which may describe (for ) the list of analyses performed as part of the test suite. For individual tests, it may only contain just the element name again.
 
 **Sample Type** is the type of test that it is - e.g. "Soil" or "Plant" etc. Currently only Soil is supported.
 
@@ -78,7 +78,7 @@ This allows us to check that we will be able to automatically import the files y
 
 ## 4. Four email addresses
 ### Details
-4.1) The "to" email address to send our sample submission information to (i.e. the [example_submission.csv](https://github.com/semiosBIO/modus-integration/blob/main/example_submission.csv) files), so that when the physical samples arrive at the lab, you’ll have all the information required to process them.
+4.1) The "to" email address to send our sample submission information to (i.e. the [example_submission_barcodes.csv](https://github.com/semiosBIO/modus-integration/blob/main/example_submission_barcodes.csv) files), so that when the physical samples arrive at the lab, you’ll have all the information required to process them.
 
 4.2) The "from" email address that Agworld will receive the Modus XML lab results from (when you send Agworld the lab results).
 
@@ -95,7 +95,7 @@ To enable the sending/retrieving of samples/results, and error/success handling.
 Please make yourself familiar with the following files.
 
 ### 1. example_submission.csv
-The file can be found here: [example_submission.csv](https://github.com/semiosBIO/modus-integration/blob/main/example_submission.csv)
+The file can be found here: [example_submission_barcodes.csv](https://github.com/semiosBIO/modus-integration/blob/main/example_submission_barcodes.csv)
 
 Description: The samples submission file we send to you.
 
@@ -113,7 +113,7 @@ Description: The lab results file you send back to us (Maximum XML File Size: 2
 
 #### Details
 This is an example of a Modus xml file that you will need to send to Agworld.
-The data inside it corresponds to the results for the first 2 samples we provided in [example_submission.csv](https://github.com/semiosBIO/modus-integration/blob/main/example_submission.csv).
+The data inside it corresponds to the results for the first 2 samples we provided in [example_submission_barcodes.csv](https://github.com/semiosBIO/modus-integration/blob/main/example_submission_barcodes.csv).
 There are many more fields that can be populated in the MODUS xml, although this is what we consider a minimum.
 (i.e. we don’t require EventCodes, DepthRefs etc, although they can be provided).
 Note that in Production, you cannot send XML files to Agworld that are larger than 2MB. Most labs send results for 1 field / sample job at a time.
