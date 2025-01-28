@@ -35,7 +35,7 @@ A CSV file listing all lab tests (packages/suites and individual tests) that are
 
 For each test, provide:
 
-2.1) The test code. This will be the code provided to the lab, c.f: [_submission_barcodes.csv](https://github.com/semiosBIO/modus-integration/blob/main/_submission_barcodes.csv). e.g. "S3"
+2.1) The test code. This will be the code provided to the lab, c.f: [example_submission_barcodes.csv](https://github.com/semiosBIO/modus-integration/blob/main/example_submission_barcodes.csv). e.g. "S3"
 
 2.2) The test name. This will be made selectable in Agworld. e.g. "Standard Package 3 - S3"
 
@@ -45,7 +45,7 @@ For each test, provide:
 
 ### Purpose
 This list will enable us to make those tests selectable within the Agworld interface by your customers.
-The test codes will populate the “test suites” column in [_submission_barcodes.csv](https://github.com/semiosBIO/modus-integration/blob/main/_submission_barcodes.csv)
+The test codes will populate the “test suites” column in [example_submission_barcodes.csv](https://github.com/semiosBIO/modus-integration/blob/main/example_submission_barcodes.csv)
 (i.e. we’ll put the id/code in there based on the user's selection. This can have multiple values which will be semi-colon separated.)
 
 There is a drop down list in Agworld that users can select from to pick the test suite(s) or individual test(s) that they want performed by you:
