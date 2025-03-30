@@ -14,6 +14,12 @@
 -->
 <ModusResult Version="1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="modus_result.xsd">
   <Event>
+    <EventMetaData>
+      <EventCode>300620</EventCode>
+      <EventDate>2025-02-06</EventDate>
+      <EventType><Soil/></EventType>
+      <EventExpirationDate>2025-02-18</EventExpirationDate>
+    </EventMetaData>
     <LabMetaData>
       <LabName>Test Lab, Inc.</LabName>
       <Contact>
@@ -36,7 +42,7 @@
       <Soil>
         <SoilSample>
           <SampleMetaData>
-            <FMISSampleID>1</FMISSampleID>
+            <FMISSampleID>4300400</FMISSampleID>
           </SampleMetaData>
           <Depths>
             <Depth>
@@ -155,7 +161,7 @@
         </SoilSample>
         <SoilSample>
           <SampleMetaData>
-            <FMISSampleID>2</FMISSampleID>
+            <FMISSampleID>4300401</FMISSampleID>
           </SampleMetaData>
           <Depths>
             <Depth>
