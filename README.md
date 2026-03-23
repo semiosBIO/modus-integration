@@ -76,3 +76,7 @@ This list will enable us to make those tests selectable within the Agworld inter
 5. An example lab results XML file with the format and data that you would be sending to us (i.e. Modus format). This allows us to validate that we will be able to import the files you send to us.
 
 More details can be found in [REQUIREMENTS](https://github.com/semiosBIO/modus-integration/blob/main/REQUIREMENTS.md).
+
+## How to maintain your lab's integration with Agworld
+
+Agworld will send details about collection jobs to your nominated "to" email address, and accept lab soil samples from your nominated "from" email address. If and when there is a problem or error, a notice will be sent to your nominated import failure email address. More details about the kind of errors to expect can be found in [ERRORS](https://github.com/semiosBIO/modus-integration/blob/main/ERRORS.md). If the error can be resolved on the lab's side (e.g. the wrong sample ID was used) then the lab results can safely be updated and resubmitted with the corrected information. If the error cannot be resolved on the lab's side, we kindly ask that you please contact our helpful support staff via support@agworld.com to resolve the issue.
