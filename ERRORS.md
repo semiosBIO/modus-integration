@@ -25,7 +25,7 @@ These are the common errors, what they mean, and how they can be resolved.
 
 Error text:
 > Error importing the following sample unique ids because these sample results
-> have already been imported, yet <OverwriteResult> is NOT set to "true".
+> have already been imported, yet \<OverwriteResult\> is NOT set to "true".
 > (Ensure you haven't repeated an 'FMISSampleID more than once) Sample unique
 > ids were: {sample_ids}
 
