@@ -44,8 +44,8 @@ This error can be resolved in the following way:
 - If the existing results for the samples in Agworld are correct, remove those
   samples from the results XML being submitted to Agworld and resubmit.
 - If the existing results for the samples in Agworld are not correct or need to
-  be updated, use the <OverwriteResult> tag to force Agworld to accept the
-  newer results. This must be added as a sibling node to the <FMISSampleID>
+  be updated, use the \<OverwriteResult\> tag to force Agworld to accept the
+  newer results. This must be added as a sibling node to the \<FMISSampleID\>
   tag.
 
 ## No XML attached
@@ -62,7 +62,7 @@ This error can be resolved by correctly attaching a results XML to the email.
 
 Error text:
 > Error importing sample with 'sample unique id' of {sample_id} (from
-> <FMISSampleID>{sample_id}</FMISSampleID>) - Couldn't find Analyte match for
+> \<FMISSampleID\>{sample_id}\</FMISSampleID\>) - Couldn't find Analyte match for
 > element {element} with test id '{modus_id}', modus units '{units}'. Valid
 > units include: {valid_units}
 
@@ -122,7 +122,7 @@ This error can be resolved by the following process:
 
 Error text:
 > Error importing sample with ‘sample unique id’ of ‘[BLANK]’ (the
-> <FMISSampleID></FMISSampleID> tags are either missing, or, if present, don’t
+> \<FMISSampleID\>\</FMISSampleID\> tags are either missing, or, if present, don’t
 > contain an ID) - Sample could not be found
 
 This error occurs when the results contain a record which is missing the
