@@ -119,4 +119,6 @@ There are many more fields that can be populated in the MODUS xml, although this
 Note that in Production, you cannot send XML files to Agworld that are larger than 2MB. Most labs send results for 1 field / sample job at a time.
 
 ## Read more
-More detailed information on the integration process can be found in the main [README](https://github.com/semiosBIO/modus-integration/blob/main/README.md) of this repo.
+More detailed information on the integration process can be found in the main [README](README.md) of this repo.
+
+Frequently asked questions can be found in [FAQ](FAQ.md).
