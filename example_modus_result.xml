@@ -43,6 +43,8 @@
         <SoilSample>
           <SampleMetaData>
             <FMISSampleID>4300400</FMISSampleID>
+            <SampleNumber>ABCDEFG</SampleNumber>
+            <OverwriteResult>true</OverwriteResult>
           </SampleMetaData>
           <Depths>
             <Depth>
