@@ -1,45 +1,196 @@
 # Frequently Asked Questions
 
-## Where in the Modus XML does the Unique Sample ID go?
+Questions and answers for labs integrating with Agworld. For the full
+specification, see the [README](README.md), [REQUIREMENTS](REQUIREMENTS.md), and
+the [error troubleshooting guide](ERRORS.md) in this repo.
 
-The `FMISSampleID` node under the `SampleMetaData` node. This is a mandatory
-field and your import will not work if this does not match an Agworld sample ID
-which is expecting results from your lab.
+## Formats and standards
 
-See documentation in the Modus Schema
+### Do you support any format other than MODUS?
+
+No. We only support MODUS, as it is the industry-supported standard. Results
+must adhere to the
+[`modus_result.xsd`](https://github.com/AgGateway/Modus/blob/main/Schema/Modus%201/modus_result.xsd)
+schema.
+
+Agworld currently supports **Soil** sample types only. Plant / tissue results
+are not imported.
+
+### Do you use Modus 1 or Modus 2 test IDs?
+
+We currently support **Modus 1** test IDs only. We intend to add Modus 2 support
+in the future while retaining full support for Modus 1. The two ID sets do not
+overlap, so a future Modus 2 rollout should not create compatibility issues for
+labs already using Modus 1 IDs.
+
+## How the integration works
+
+### Is the integration email only, or is there a web service / API endpoint?
+
+Email only, in both directions:
+
+- Agworld emails the sample submission CSV to the lab.
+- The lab emails the MODUS results XML back to Agworld's automated inbox.
+
+We would like to support web service endpoints in the future — both for
+outgoing orders and incoming results — but they are not available today.
+
+## Email deliverability and security
+
+### Can we verify your emails, and are there any security requirements?
+
+There are no hard security requirements we impose on your inbound results
+emails. We do not require inbound emails to be DKIM-signed.
+
+Our outgoing email is sent via SendGrid using SendGrid domain authentication, so
+messages are DKIM-signed and you are welcome to verify them. We also publish
+DMARC records. We recommend labs follow SPF / DKIM / DMARC best practices to
+avoid deliverability issues.
+
+SendGrid uses opportunistic TLS, so mail is encrypted in transit where both
+mail servers support it.
+
+## Identifying samples, results, and customers
+
+### Which fields from the submission CSV must we send back in the results XML?
+
+Only one: the `sample unique id` from the CSV must be returned as the
+**`FMISSampleID`** node (under `SampleMetaData`). This is mandatory — it is how
+we match your results to an Agworld sample, and the import will fail if it does
+not match a sample that is expecting results from your lab.
+
+Each individual result is then matched by its **`ModusTestID`** (plus units), so
+you do **not** need to send the test suite / package name back for matching.
+Everything else in the CSV is provided for your information and records.
+
+The following nodes are accepted but **ignored** by the importer (they can be
+useful for your own debugging, but have no effect on the import):
+`TestPackageRefs > Name`, `EventCode`, and `SampleNumber` (the barcode).
+
+See the Modus Schema documentation for
 [FMISSampleID](https://github.com/aggateway/Modus/blob/7f041e6ed7685446e40214b5b9b39dfcf8f9ef3d/Schema/Modus%201/modus_global.xsd#L650)
+and an [example](example_modus_result.xml#L45).
 
-See [example](example_modus_result.xml#L45).
+### Does the sample barcode need to match the FMISSampleID?
 
-## Where in the Modus XML does the Sample Job ID / Collection Job ID go?
+No. These are two different values:
 
-The `EventCode` node under the `EventMetadata` node. This is an optional field
-and is ignored by the importer but can be helpful to include in the XML for
-debugging purposes.
+- **`FMISSampleID`** is Agworld's internal sample record ID — the
+  `sample unique id` column in the submission CSV. It is the only value we use
+  to match your results to a sample.
+- The **barcode** is the `sample barcode` column in the CSV. It only helps you
+  associate the physical sample with its record; it is not used for matching.
 
-See documentation in the Modus Schema
-[EventCode](https://github.com/aggateway/Modus/blob/7f041e6ed7685446e40214b5b9b39dfcf8f9ef3d/Schema/Modus%201/modus_global.xsd#L914)
+If you want to include the barcode in your results for your own reference, it
+goes in the `SampleNumber` node under `SampleMetaData`. This field is optional
+and is ignored by the importer.
 
-See [example](example_modus_result.xml#L18).
-
-## Where in the Modus XML does the barcode go?
-
-The `SampleNumber` node under the `SampleMetaData`. This is an optional field
-and is ignored by the importer but can be helpful to include in the XML for
-debugging purposes.
-
-See documentation in the Modus Schema
+See the Modus Schema documentation for
 [SampleNumber](https://github.com/aggateway/Modus/blob/7f041e6ed7685446e40214b5b9b39dfcf8f9ef3d/Schema/Modus%201/modus_global.xsd#L645)
+and an [example](example_modus_result.xml#L46).
 
-See [example](example_modus_result.xml#L46).
+### What are the maximum lengths of the sample barcode and the FMISSampleID?
 
-## How can I resubmit results for a sample I already submitted results for?
+The **barcode** is entirely determined by you — Agworld imposes no length limit
+and does not use it for matching. In practice, 1D barcodes are typically 48
+characters or fewer, and 2D / QR codes can be much longer; most are short.
+
+The **FMISSampleID** is a numeric identifier generated by Agworld. It is
+currently an integer of up to 10 digits. We may change this scheme in the
+future, but it will always be the sample's unique identifier that you echo back
+in your results.
+
+### How do we identify the customer or grower? Can we use LabID or the billing fields?
+
+We match results to the correct record solely by **FMISSampleID**;
+`LabMetaData > LabID` is not used for this.
+
+For human troubleshooting, the `grower name`, `farm name`, and `field name`
+columns in the CSV are the easiest way to identify a sample. The
+`billing account number` and `billing purchase order number` columns are
+optional pass-through values for your own records — Agworld does not use them to
+identify or match anything.
+
+## Sample depths
+
+### Do we need to report the actual sample depths back to you?
+
+Not as far as our import is concerned. Each depth of a sample is a distinct
+record with its own FMISSampleID, so we correlate on FMISSampleID alone.
+Reporting depths is a MODUS convention and useful for record keeping, but it is
+optional for our import.
+
+## File size and large orders
+
+### Is there a maximum results-XML file size, and how should we handle large orders?
+
+Yes. In production, the attachments on a results email may not exceed **2 MB**
+in total. Agworld cannot split files on our end, so file size must be managed by
+the lab.
+
+We recommend sending results one field / sample job per email — most labs do
+this. It keeps files well under the limit and gives more fine-grained error
+handling, which makes debugging easier.
+
+If you split a large order across several emails or files, that is fine: we
+correlate every sample by its FMISSampleID regardless of how the results are
+grouped or split.
+
+## The submission CSV fields
+
+### Can a customer request more than one analysis package per sample?
+
+Yes — this is common. Customers frequently "stack" multiple lab tests against
+the supplied samples. Multiple test codes appear in the `test suites` column,
+semicolon-separated.
+
+### Can we include extra information such as comments or crop type in the CSV?
+
+No. The submission CSV has no free-text comments field. Any such requirements
+need to be managed directly between the lab and the customer.
+
+### What format are the billing phone number and collector phone number in?
+
+The full phone number is sent. International contacts include the international
+prefix, for example `+1 555-555-5555`.
+
+### The billing purchase order number — is it the same for every row, and do we echo it back?
+
+It is optional and, when present, is the same for every row of a job's CSV, so
+you can read it once. It is for the lab's records only and is **not** required
+(or used) in the results XML.
+
+### The sample job id — is it always populated, is it the same for every row, and how do we reference it?
+
+There is exactly one `sample job id` per CSV. It is always present and is the
+same on every row — it identifies the collection job (a group of points to
+sample). Each collection job has one sample job id and, when a purchase order
+number is supplied, one purchase order number.
+
+It is **not** required in your results. If you would like to include it for
+debugging, put it in the `EventCode` node under `EventMetaData`:
+
+```xml
+<EventMetaData>
+  <EventCode>sample job id</EventCode>
+</EventMetaData>
+```
+
+Be aware this has no meaning to the Agworld system and is used for information
+purposes only — the importer ignores it and always matches on FMISSampleID.
+
+See the Modus Schema documentation for
+[EventCode](https://github.com/aggateway/Modus/blob/7f041e6ed7685446e40214b5b9b39dfcf8f9ef3d/Schema/Modus%201/modus_global.xsd#L914)
+and an [example](example_modus_result.xml#L18).
+
+## Resubmitting results
+
+### How can I resubmit results for a sample I already submitted results for?
 
 By default Agworld will reject resubmissions to avoid accidental overwrites. To
-force an overwrite the `OverwriteResult` node should be included asSampleNumbera sibling
+force an overwrite, the `OverwriteResult` node should be included as a sibling
 to the `FMISSampleID` node.
 
-See documentation in the Modus Schema
+See the Modus Schema documentation for
 [OverwriteResult](https://github.com/aggateway/Modus/blob/7f041e6ed7685446e40214b5b9b39dfcf8f9ef3d/Schema/Modus%201/modus_global.xsd#L670)
-
-See [example](example_modus_result.xml#L47).
+and an [example](example_modus_result.xml#L47).
