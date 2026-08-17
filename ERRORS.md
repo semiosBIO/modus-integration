@@ -25,9 +25,10 @@ These are the common errors, what they mean, and how they can be resolved.
 
 Error text:
 > Error importing the following sample unique ids because these sample results
-> have already been imported, yet \<OverwriteResult\> is NOT set to "true".
-> (Ensure you haven't repeated an 'FMISSampleID more than once) Sample unique
-> ids were: {sample_ids}
+> have already been imported. To re-import and overwrite them, the overwrite
+> element must be sent exactly as \<OverwriteResult\>true\</OverwriteResult\> as
+> a sibling to the FMISSampleID node. Also ensure you haven't repeated an
+> FMISSampleID more than once. Sample unique ids were: {sample_ids}
 
 This error occurs when there a FMISSampleID in the results XML matches a sample
 in the Agworld system but that sample already has results attached to it. This
