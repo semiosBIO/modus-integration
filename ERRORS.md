@@ -114,8 +114,9 @@ a sample in Agworld.
 
 This error can be resolved by the following process:
 1. Check the bad sample ID in the error. It could be a typo or transcription
-   error. For example if it contains non-numeric characters this is not an
-   Agworld sample ID.
+   error, for example a mistyped or dropped digit. A sample ID that is not a
+   whole number is reported as the "Invalid Sample ID (non-numeric)" error
+   below, rather than this one.
 2. Check with the relevant Agworld user to confirm what the correct sample IDs
    are for the collection job in question.
 
@@ -131,6 +132,28 @@ This error occurs when the results contain a record which is missing the
 
 This error can be resolved by including the FMISSampleID tag in the results XML
 with a valid Sample ID.
+
+## Invalid Sample ID (non-numeric)
+
+Error text:
+> Error importing sample with 'sample unique id' of {sample_id} (from
+> \<FMISSampleID\>{sample_id}\</FMISSampleID\>) - The FMISSampleID must be the
+> numerical 'sample unique id' from the 'sample unique id' column of the
+> submission CSV, not a barcode or other non-numeric value.
+
+This error occurs when the FMISSampleID in the results XML is present but is not
+a whole number. The most common cause is a lab populating the FMISSampleID with
+the sample's barcode (or another lab-internal reference) rather than the
+numerical 'sample unique id' that Agworld provided in the submission CSV.
+
+Agworld sample unique ids are always whole numbers, so the FMISSampleID must
+contain only digits.
+
+This error can be resolved by the following process:
+1. Locate the affected sample in the submission CSV that Agworld provided.
+2. Use the value from the 'sample unique id' column as the FMISSampleID in the
+   results XML, rather than the barcode or any lab-internal identifier.
+3. Resubmit the corrected results XML.
 
 ## XML contains no results
 
